@@ -31,7 +31,7 @@ gulp.task(`build#electron`, () => {
 
 /**
 */
-gulp.task(`build`, [`scripts`, `html`, `electron`].map(t => `build#${t}`), () => {
+gulp.task(`build`, [`scripts`, `html`].map(t => `build#${t}`), () => {
     console.log(`building...?`);
 });
 
