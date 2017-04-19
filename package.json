@@ -9,7 +9,6 @@
     "start": "electron target/dist/main.js"
   },
   "dependencies": {
-    "babylonjs": "^3.0.0-alpha",
     "immutable": "^3.8.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
