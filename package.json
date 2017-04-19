@@ -19,6 +19,7 @@
     "typedoc": "^0.5.10"
   },
   "devDependencies": {
+    "@types/electron": "^1.4.37",
     "chai": "^3.5.0",
     "electron": "^1.6.5",
     "gulp": "^3.9.1",

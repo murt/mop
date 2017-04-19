@@ -25,14 +25,15 @@ gulp.task(`build#html`, () => {
 
 /**
 */
+/*
 gulp.task(`build#electron`, () => {
     console.log(`building electron...`);
 });
+*/
 
 /**
 */
 gulp.task(`build`, [`scripts`, `html`].map(t => `build#${t}`), () => {
-    console.log(`building...?`);
 });
 
 /**
@@ -48,7 +49,7 @@ gulp.task(`doc`, () => {
     return gulp.src([`src/main/ts/*.ts`])
     .pipe(gtd({
         module: `commonjs`,
-        target: `es5`,
+        target: `es6`,
         includeDeclarations: true,
         excludeExternals: true,
 

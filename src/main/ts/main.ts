@@ -1,8 +1,9 @@
+import {app, BrowserWindow} from 'electron';
+
 const path = require('path');
 const url = require('url');
-const {app, BrowserWindow} = require('electron');
 
-let win;
+let win:Electron.BrowserWindow;
 
 function createWindow () {
   win = new BrowserWindow({width: 800, height: 600});
