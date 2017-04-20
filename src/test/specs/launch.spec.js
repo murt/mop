@@ -1,25 +1,21 @@
-const path = require(`path`);
-const assert = require(`assert`);
-const { Application } = require(`spectron`);
+const chai = require(`chai`);
+const { expect } = chai;
+
+const utils = require(`./utils`);
 
 describe(`mop#launch`, function () {
     this.timeout(60000);
 
     beforeEach(function () {
-        this.app = new Application({
-            path: path.resolve(`node_modules`, `.bin`, `electron`),
-            args: [path.resolve(`target`, `dist`, `main.js`)]
-        });
-        return this.app.start();
+        return utils.setup(this);
     });
 
     afterEach(function () {
-        if (this.app && this.app.isRunning()) {
-            return this.app.stop();
-        }
+        return utils.teardown(this);
     });
 
     it(`shows an initial window`, function () {
-        return this.app.client.getWindowCount().then(function (count) { assert.equal(count, 1); });
+        return this.app.client.getWindowCount()
+        .then(count => expect(count).to.equal(1));
     });
 });
