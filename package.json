@@ -9,25 +9,33 @@
     "start": "electron target/dist/main.js"
   },
   "dependencies": {
+    "bulma": "^0.4.0",
     "immutable": "^3.8.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
+    "react-router": "^4.1.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "typedoc": "^0.5.10"
   },
   "devDependencies": {
     "@types/electron": "^1.4.37",
+    "@types/react": "^15.0.22",
     "chai": "^3.5.0",
     "electron": "^1.6.5",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.1",
     "gulp-pug": "^3.3.0",
+    "gulp-sass": "^3.1.0",
     "gulp-typedoc": "^2.0.2",
     "gulp-typescript": "^3.1.6",
     "mocha": "^3.2.0",
+    "node-sass": "^4.5.2",
     "pug": "^2.0.0-beta.12",
+    "tslint": "^5.1.0",
+    "tslint-react": "^2.6.0",
     "typescript": "^2.2.2"
   }
 }
