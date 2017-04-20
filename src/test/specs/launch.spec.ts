@@ -1,3 +1,4 @@
+import 'mocha';
 const chai = require(`chai`);
 const { expect } = chai;
 
@@ -15,7 +16,6 @@ describe(`mop#launch`, function () {
     });
 
     it(`shows an initial window`, function () {
-        return this.app.client.getWindowCount()
-        .then(count => expect(count).to.equal(1));
+        return this.app.client.getWindowCount().then(function(count:number) { expect(count).to.equal(1) });
     });
 });
