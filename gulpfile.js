@@ -6,6 +6,7 @@ const gpug = require(`gulp-pug`);
 const gconcat = require(`gulp-concat`);
 const gsass = require(`gulp-sass`);
 const gsrc = require(`gulp-add-src`);
+const gmocha = require(`gulp-mocha`);
 
 const pkg = require(`./package.json`);
 
@@ -53,6 +54,13 @@ gulp.task(
     [`scripts`, `html`, `styles`, `fonts`].map(t => `build#${t}`),
     () => {}
 );
+
+/**
+*/
+gulp.task(`test`, [`build`], () => {
+    return gulp.src([`src/test/specs/*.spec.js`])
+    .pipe(gmocha());
+});
 
 /**
 */

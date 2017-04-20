@@ -17,7 +17,7 @@ function createWindow ({width=800, height=600}:{width?:number, height?:number}={
     slashes: true
   }));
 
-  win.webContents.openDevTools();
+  //win.webContents.openDevTools();
 
   win.on('closed', () => {
     win = null;
