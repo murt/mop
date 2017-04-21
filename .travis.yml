@@ -12,4 +12,4 @@ script:
     - 'npm run clean && npm run build && mkdir -p target/test && cp -R target/dist target/test/dist && npm run cover'
 
 after_success:
-    - 'cat ./target/reports/coverage/lcov.info | ./node_modules/.bin/coveralls'
+    - 'cat ./target/reports/coverage/lcov.info | ./node_modules/.bin/coveralls -v'
