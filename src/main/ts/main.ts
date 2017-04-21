@@ -1,6 +1,4 @@
-import 'electron';
-
-import {app, BrowserWindow} from 'electron';
+import {app, ipcMain, BrowserWindow} from 'electron';
 
 const path = require('path');
 const url = require('url');
@@ -19,9 +17,15 @@ function createWindow ({width=800, height=600}:{width?:number, height?:number}={
     slashes: true
   }));
 
-  //win.webContents.openDevTools();
+  if (true) {
+    require('devtron').install();
+    // TODO: Get details of windows in the specs and check if ANY of them have coverage
+    // otherwise the dev tools window will be counted
+    //win.webContents.openDevTools();
+  }
 
   win.on('closed', () => {
+    /* istanbul ignore next */
     win = null;
   });
 }
@@ -29,14 +33,14 @@ function createWindow ({width=800, height=600}:{width?:number, height?:number}={
 //
 app.on('ready', createWindow);
 
-//
+/* istanbul ignore next */
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
 });
 
-//
+/* istanbul ignore next */
 app.on('activate', () => {
   if (win === null) {
     createWindow();

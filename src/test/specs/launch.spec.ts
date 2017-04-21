@@ -1,21 +1,27 @@
 import 'mocha';
-const chai = require(`chai`);
+const chai = require('chai');
 const { expect } = chai;
 
-const utils = require(`./utils`);
+const utils = require('./utils');
 
-describe(`mop#launch`, function () {
-    this.timeout(60000);
+describe('mop#launch', function () {
+  utils.timeout(this);
 
-    beforeEach(function () {
-        return utils.setup(this);
-    });
+  after(function () {
+    return utils.after(this);
+  });
 
-    afterEach(function () {
-        return utils.teardown(this);
-    });
+  beforeEach(function () {
+    return utils.beforeEach(this);
+  });
 
-    it(`shows an initial window`, function () {
-        return this.app.client.getWindowCount().then(function(count:number) { expect(count).to.equal(1) });
-    });
+  afterEach(function () {
+    return utils.afterEach(this);
+  });
+
+  it('shows an initial window', function () {
+    return this.app.client.waitUntilWindowLoaded()
+    .getWindowCount().then(function(count:number) { expect(count).to.be.at.least(1) })
+  });
+
 });

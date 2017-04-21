@@ -11,22 +11,28 @@
     "cover": "gulp cover"
   },
   "dependencies": {
-    "bulma": "^0.4.0",
+    "check-types": "^7.1.5",
+    "fs-extra": "^2.1.2",
+    "graceful-fs": "^4.1.11",
     "immutable": "^3.8.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
     "react-router": "^4.1.1",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "uuid": "^3.0.1"
   },
   "devDependencies": {
     "@types/electron": "^1.4.37",
     "@types/mocha": "^2.2.41",
     "@types/react": "^15.0.22",
     "@types/webdriverio": "^4.6.1",
+    "bulma": "^0.4.0",
     "chai": "^3.5.0",
-    "electron": "^1.6.5",
+    "coveralls": "^2.13.0",
+    "devtron": "^1.4.0",
+    "electron": "^1.6.7",
     "gulp": "^3.9.1",
     "gulp-add-src": "^0.2.0",
     "gulp-clean": "^0.3.2",
@@ -39,16 +45,18 @@
     "gulp-typescript": "^3.1.6",
     "isparta": "^4.0.0",
     "istanbul": "^0.4.5",
+    "istanbul-combine": "^0.3.0",
     "mocha": "^3.2.0",
     "node-sass": "^4.5.2",
     "pug": "^2.0.0-beta.12",
     "remap-istanbul": "^0.9.5",
+    "run-sequence": "^1.2.2",
     "source-map-support": "^0.4.14",
     "spectron": "^3.6.1",
     "ts-node": "^3.0.2",
     "tslint": "^5.1.0",
     "tslint-react": "^2.6.0",
     "typedoc": "^0.5.10",
-    "typescript": "^2.2.2"
+    "typescript": "^2.3.0"
   }
 }

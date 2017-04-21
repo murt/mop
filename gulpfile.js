@@ -9,8 +9,11 @@ const gsass = require(`gulp-sass`);
 const gsrc = require(`gulp-add-src`);
 const gmocha = require(`gulp-mocha`);
 const gistanbul = require(`gulp-istanbul`);
+const gremap = require(`remap-istanbul/lib/gulpRemapIstanbul`);
 const runSequence = require(`run-sequence`);
 const isparta = require(`isparta`);
+const combine = require(`istanbul-combine`);
+const fsx = require(`fs-extra`);
 
 const pkg = require(`./package.json`);
 
@@ -81,7 +84,8 @@ gulp.task(`test`, [`build`, `test:specs`], () => {
 gulp.task(`cover:instrument`, () => {
     return gulp.src([`target/dist/*.js`])
     .pipe(gistanbul({
-        includeUntested: true
+        includeUntested: true,
+        coverageVariable: `__coverage__`
     }))
     .pipe(gulp.dest(`target/test/dist`))
 });
@@ -90,25 +94,48 @@ gulp.task(`cover:instrument`, () => {
 */
 gulp.task(`cover:test`, () => {
     return gulp.src([`target/test/specs/*.spec.js`], {read:false})
-    .pipe(gmocha())
-    .pipe(gistanbul.writeReports());
+    .pipe(gmocha());
+});
+
+/**
+*/
+gulp.task(`cover:combine`, () => {
+    combine.sync({
+        dir: `target/reports/coverage`,
+        pattern: `target/reports/coverage/*.json`,
+        print: `detail`,
+        reporters: {
+            json: { file: `coverage-combined.json` }
+        }
+    });
 });
 
 /**
 */
 gulp.task(`cover:remap`, () => {
+    return gulp.src([`target/reports/coverage/coverage-combined.json`])
+    .pipe(gremap({
+        reports: {
+            'text': '',
+            json: 'target/reports/coverage/coverage-remap.json',
+            'html': 'target/reports/coverage/html',
+            lcovonly: 'target/reports/coverage/lcov.info'
+        }
+    }));
+});
+
+gulp.task('targets', () => {
+    fsx.mkdirsSync('target/reports/coverage');
 });
 
 gulp.task(`cover`, function (done) {
-    runSequence(`test:specs`, `cover:instrument`, `cover:test`, done);
+    runSequence(`targets`, `test:specs`, `cover:instrument`, `cover:test`, `cover:combine`, `cover:remap`, done);
 });
 
 /**
 */
 gulp.task(`clean`, () => {
-    // TODO: Remove coverage once it's working correctly
-    return gulp.src([`target`, `coverage`], {read: false})
-    .pipe(gclean());
+    return gulp.src([`target`], {read: false}).pipe(gclean());
 });
 
 /**
