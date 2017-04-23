@@ -115,6 +115,7 @@ gulp.task(`cover:combine`, () => {
 gulp.task(`cover:remap`, () => {
     return gulp.src([`target/reports/coverage/coverage-combined.json`])
     .pipe(gremap({
+        basePath: 'src/main/ts',
         reports: {
             'text': '',
             json: 'target/reports/coverage/coverage-remap.json',
