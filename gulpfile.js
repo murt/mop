@@ -116,7 +116,7 @@ gulp.task(`cover:test`, [`test:specs`], () => {
 gulp.task(`cover:combine`, () => {
     combine.sync({
         dir: `target/reports/coverage`,
-        pattern: `target/reports/coverage/*.json`,
+        pattern: `target/reports/coverage/*.json`, /* TODO: Should this target specific JSON file patterns in case of unclean environment? */
         print: `detail`,
         reporters: {
             json: { file: `coverage-combined.json` }
