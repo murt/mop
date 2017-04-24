@@ -1,1 +1,10 @@
+environment:
+    nodejs_version: "7"
 
+install:
+    - ps: $env:package_version = (Get-Content -Raw -Path package.json | ConvertFrom-Json).version
+    - ps: Update-AppveyorBuild -Version "$(env:package_version)-$env:APPVEYOR_BUILD_NUMBER"
+    - npm install
+
+test_script:
+    - npm run build 
