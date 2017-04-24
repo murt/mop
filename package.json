@@ -37,6 +37,7 @@
     "@types/webdriverio": "^4.6.1",
     "bulma": "^0.4.1",
     "chai": "^3.5.0",
+    "codeclimate-tslint": "^0.6.0",
     "coveralls": "^2.13.0",
     "devtron": "^1.4.0",
     "electron": "^1.6.7",
@@ -49,6 +50,7 @@
     "gulp-mocha": "^4.3.0",
     "gulp-pug": "^3.3.0",
     "gulp-sass": "^3.1.0",
+    "gulp-tslint": "^8.0.0",
     "gulp-typedoc": "^2.0.2",
     "gulp-typescript": "^3.1.6",
     "isparta": "^4.0.0",
@@ -63,6 +65,7 @@
     "spectron": "^3.6.2",
     "ts-node": "^3.0.2",
     "tslint": "^5.1.0",
+    "tslint-config-airbnb": "^1.1.1",
     "tslint-react": "^2.6.0",
     "typedoc": "^0.5.10",
     "typescript": "^2.3.0"

@@ -12,6 +12,7 @@ const gmocha = require(`gulp-mocha`);
 const gistanbul = require(`gulp-istanbul`);
 const greport = require(`gulp-istanbul-report`);
 const gremap = require(`remap-istanbul/lib/gulpRemapIstanbul`);
+const gtslint = require(`gulp-tslint`);
 const runSequence = require(`run-sequence`);
 const isparta = require(`isparta`);
 const combine = require(`istanbul-combine`);
@@ -191,5 +192,17 @@ gulp.task(`doc`, () => {
         name: pkg.name,
         ignoreCompilerErrors: false,
         version: true
+    }));
+});
+
+/**
+*/
+gulp.task(`lint`, () => {
+    return gulp.src([`src/main/ts/*.ts`])
+    .pipe(gtslint({
+        formatter: `stylish`
+    }))
+    .pipe(gtslint.report({
+        emitError: false
     }));
 });
