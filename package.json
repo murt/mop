@@ -1,7 +1,14 @@
 {
   "name": "mop",
   "version": "0.0.1",
+  "author": "murt <murt@unpossible.io>",
   "private": true,
+  "license": "MIT",
+  "repository": "murt/mop",
+  "bugs": {
+    "url": "https://github.com/murt/mop/issues",
+    "email": "murt@unpossible.io"
+  },
   "scripts": {
     "build": "gulp build",
     "clean": "gulp clean",
