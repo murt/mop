@@ -114,7 +114,9 @@ gulp.task(`test:copy`, () => {
  */
 gulp.task(`test:run`, () => {
     return gulp.src([`target/test/specs/*.spec.js`], {read:false})
-    .pipe(require(`gulp-mocha`)());
+    .pipe(gmocha({
+        timeout: 0
+    }));
 });
 
 // ----------------------------------------------------------------[ TEST:LINT ]

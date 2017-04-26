@@ -5,8 +5,6 @@ const { expect } = chai;
 const utils = require('./utils');
 
 describe('mop#launch', function () {
-  utils.timeout(this);
-
   after(function () {
     return utils.after(this);
   });
