@@ -4,13 +4,10 @@ html(lang="en")
         title mop
         link(rel="stylesheet", type="text/css", href="style.css")
     body
-        nav.nav.has-shadow
-            div.nav-left
-                a#mop-logo.nav-item MOP
-
-        div.container.is-fluid
-            div.notification
-                | This is the main mop container
+        div#content
 
         script(type="text/javascript").
-            require('./app.js');
+            const React = require('react');
+            const reactDOM = require('react-dom');
+            const { App } = require('./app.js');
+            reactDOM.render(React.createElement(App), document.getElementById('content'));
