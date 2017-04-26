@@ -12,4 +12,4 @@ install:
 
 test_script:
     - npm run clean
-    - npm run test
+    - npm test -- --skip-coverage --skip-lint
