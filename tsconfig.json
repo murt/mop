@@ -1,10 +1,12 @@
 {
   "files": [
-    "src/main/ts/*.ts"
+    "src/main/ts/*.ts",
+    "src/main/ts/*.tsx"
   ],
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "jsx": "react"
   }
 }

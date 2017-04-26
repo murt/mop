@@ -1,15 +1,17 @@
-import 'electron';
-import 'spectron';
+import * as WebDriverIO from 'webdriverio';
+import * as Promise from 'bluebird';
+import * as fs from 'graceful-fs';
+import * as uuid from 'uuid';
+import * as path from 'path';
 
-const fs = require('graceful-fs');
-const uuid = require('uuid');
-const path = require('path');
 const { Application } = require('spectron');
 
 const coverage:string[] = [];
 
 const storeCov = (cov:object) => {
-  coverage.push(JSON.stringify(cov));
+  if (cov) {
+    coverage.push(JSON.stringify(cov));
+  }
 };
 
 interface MochaContext {
@@ -33,8 +35,13 @@ export function afterEach (ctx:MochaContext) {
   if (ctx.app && ctx.app.isRunning()) {
     return ctx.app.electron.remote.getGlobal('__coverage__')
     .then(storeCov)
-    .then(() => ctx.app.client.execute(function() { return (<any>window).__coverage__; }))
-    .then(res => storeCov(res.value))
+    .then(() => ctx.app.client.windowHandles())
+    .then((windows:WebDriverIO.RawResult<string[]>) => {
+      return Promise.all(Array<undefined>(windows.value.length).fill(undefined).map(
+        (_:undefined, i:number) => ctx.app.client.window(windows.value[i]).execute(() => (<any>window).__coverage__)
+      ));
+    })
+    .then((res:WebDriverIO.RawResult<any>[]) => res.forEach((r:any) => storeCov(r.value)))
     .then(() => ctx.app.stop());
   }
 }

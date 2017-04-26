@@ -21,7 +21,7 @@ function createWindow ({width=800, height=600}:{width?:number, height?:number}={
     require('devtron').install();
     // TODO: Get details of windows in the specs and check if ANY of them have coverage
     // otherwise the dev tools window will be counted
-    //win.webContents.openDevTools();
+    win.webContents.openDevTools();
   }
 
   win.on('closed', () => {

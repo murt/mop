@@ -14,10 +14,10 @@
     "clean": "gulp clean",
     "doc": "gulp doc",
     "start": "electron target/dist/main.js",
-    "test": "gulp test",
-    "cover": "gulp cover"
+    "test": "gulp test"
   },
   "dependencies": {
+    "bluebird": "^3.5.0",
     "check-types": "^7.1.5",
     "fs-extra": "^2.1.2",
     "graceful-fs": "^4.1.11",
@@ -29,12 +29,16 @@
     "react-router": "^4.1.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
-    "uuid": "^3.0.1"
+    "uuid": "^3.0.1",
+    "yargs": "^7.1.0"
   },
   "devDependencies": {
+    "@types/bluebird": "^3.5.2",
     "@types/electron": "^1.4.37",
+    "@types/graceful-fs": "^2.0.29",
     "@types/mocha": "^2.2.41",
     "@types/react": "^15.0.23",
+    "@types/uuid": "^2.0.29",
     "@types/webdriverio": "^4.6.1",
     "bulma": "^0.4.1",
     "chai": "^3.5.0",
@@ -42,10 +46,11 @@
     "coveralls": "^2.13.0",
     "devtron": "^1.4.0",
     "electron": "^1.6.7",
-    "gulp": "^3.9.1",
+    "gulp": "github:gulpjs/gulp#4.0",
     "gulp-add-src": "^0.2.0",
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.1",
+    "gulp-function": "^2.2.3",
     "gulp-istanbul": "^1.1.1",
     "gulp-istanbul-report": "0.0.1",
     "gulp-mocha": "^4.3.0",
