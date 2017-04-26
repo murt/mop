@@ -24,8 +24,9 @@ export function timeout (ctx:any) {
 
 export function beforeEach (ctx:MochaContext) {
   ctx.app = new Application({
-    path: path.resolve('node_modules', '.bin', 'electron'),
-    args: [path.resolve('target', 'test', 'dist', 'main.js')]
+    path: path.resolve('node_modules', '.bin', process.platform === 'win32' ? 'electron.cmd' : 'electron'),
+    args: [path.resolve('target', 'test', 'dist', 'main.js')],
+    chromeDriverLogPath: path.resolve('target', 'logs', 'chrome-driver.log')
   });
 
   return ctx.app.start();
@@ -37,7 +38,7 @@ export function afterEach (ctx:MochaContext) {
     .then(storeCov)
     .then(() => ctx.app.client.windowHandles())
     .then((windows:WebDriverIO.RawResult<string[]>) => {
-      return Promise.all(Array<undefined>(windows.value.length).fill(undefined).map(
+      return Promise.all(Array(windows.value.length).fill(undefined).map(
         (_:undefined, i:number) => ctx.app.client.window(windows.value[i]).execute(() => (<any>window).__coverage__)
       ));
     })

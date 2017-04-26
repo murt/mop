@@ -110,6 +110,15 @@ gulp.task(`test:copy`, () => {
 });
 
 /**
+ * Manually create certain target directories as some of the gulp tasks
+ * will not work unless they already exist.
+ */
+gulp.task('test:targets', (done) => {
+    fsx.mkdirsSync('target/logs');
+    done();
+});
+
+/**
  * Run the compiled spec files
  */
 gulp.task(`test:run`, () => {
@@ -220,6 +229,7 @@ gulp.task(`test`, gulp.series(
     ...[argv.skipLint ? [] : `test:lint`],
     `test:copy`,
     `test:build`,
+    `test:targets`,
     argv.skipCoverage ? `test:run` : `test:cover:run`
 ));
 
@@ -249,4 +259,3 @@ gulp.task(`doc`, () => {
         version: true
     }));
 });
-
