@@ -18,6 +18,7 @@ const runSequence = require(`run-sequence`);
 const isparta = require(`isparta`);
 const combine = require(`istanbul-combine`);
 const fsx = require(`fs-extra`);
+const del = require(`del`);
 
 // Read package.json contents for use in tasks
 const pkg = require(`./package.json`);
@@ -227,7 +228,7 @@ gulp.task(`test`, gulp.series(
  * Clean output directories
 */
 gulp.task(`clean`, () => {
-    return gulp.src([`target`], {read: false}).pipe(gclean());
+    return del([`target`]);
 });
 
 /**
