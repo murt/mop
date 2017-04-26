@@ -1,6 +1,5 @@
 const path = require(`path`);
 const gulp = require(`gulp`);
-const gclean = require(`gulp-clean`);
 const gts = require(`gulp-typescript`);
 const gsourcemaps = require(`gulp-sourcemaps`);
 const gtd = require(`gulp-typedoc`);
